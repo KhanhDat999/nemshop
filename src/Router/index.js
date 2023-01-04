@@ -10,7 +10,7 @@ import Giohang from "../layouts/Giohang/Giohang";
 function Router() {
   return (
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/nemshop" element={<Home />} />
           <Route path="/tatcasanpham" element={<Sanpham />} />
           <Route path="/login" element={<Login />} />
           <Route path="/chitietsanpham" element={<Chitiet />} />
