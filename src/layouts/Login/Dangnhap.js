@@ -28,7 +28,7 @@ function Dangnhap() {
         // Popup signin flow rather than redirect flow.
         signInFlow: 'popup',
 
-        signInSuccessUrl: '/',
+        signInSuccessUrl: '/nemshop',
         // We will display Google and Facebook as auth providers.
         signInOptions: [
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,

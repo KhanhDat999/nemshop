@@ -122,7 +122,7 @@ function Header() {
               }
               {
                 user &&   <div className={cx('hoverdangky1')}>
-                <a href='/' >  <div onClick={() => firebase.auth().signOut()} className={cx('div')}>Đăng xuất</div> </a>
+                <a href='/nemshop' >  <div onClick={() => firebase.auth().signOut()} className={cx('div')}>Đăng xuất</div> </a>
               
               </div>
               }
