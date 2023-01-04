@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/nemshop/static/css/main.6239a89e.css",
+    "main.js": "/nemshop/static/js/main.a6bccd16.js",
+    "index.html": "/nemshop/index.html",
+    "main.6239a89e.css.map": "/nemshop/static/css/main.6239a89e.css.map",
+    "main.a6bccd16.js.map": "/nemshop/static/js/main.a6bccd16.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6239a89e.css",
+    "static/js/main.a6bccd16.js"
+  ]
+}
