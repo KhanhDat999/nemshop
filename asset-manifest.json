@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/nemshop/static/css/main.6239a89e.css",
-    "main.js": "/nemshop/static/js/main.9bff7d67.js",
+    "main.js": "/nemshop/static/js/main.8d6384c6.js",
     "index.html": "/nemshop/index.html",
     "main.6239a89e.css.map": "/nemshop/static/css/main.6239a89e.css.map",
-    "main.9bff7d67.js.map": "/nemshop/static/js/main.9bff7d67.js.map"
+    "main.8d6384c6.js.map": "/nemshop/static/js/main.8d6384c6.js.map"
   },
   "entrypoints": [
     "static/css/main.6239a89e.css",
-    "static/js/main.9bff7d67.js"
+    "static/js/main.8d6384c6.js"
   ]
 }
