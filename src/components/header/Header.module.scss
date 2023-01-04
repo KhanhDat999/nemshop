@@ -1,0 +1,275 @@
+@media screen and (max-width : 70em) {
+
+
+    body {
+        .header {
+
+            .abc {
+
+                .menu {
+                    display: block;
+
+                    .menu1 {
+                        margin-left: 30px;
+                        width: 30px;
+                        height: 30px;
+
+                    }
+
+                }
+
+            }
+
+            .bodyheader {
+                .responsive {
+                    display: none;
+                }
+
+                .search {
+                    display: none;
+                }
+
+
+
+
+
+
+            }
+        }
+    }
+}
+
+
+body {
+    a {
+        text-decoration: none;
+
+    }
+
+}
+
+
+.header {
+    position: fixed;
+    z-index: 3;
+    background-color: white;
+    height: 92px;
+    display: flex;
+    width: 100%;
+
+    margin-top: -92px;
+
+    .abc {
+        height: 50px;
+
+        .menu {
+            display: none;
+        }
+
+    }
+
+    .bodyheader {
+        margin: auto;
+        margin-top: 30px;
+        display: flex;
+        width: 1330px;
+        height: 62px;
+
+
+        .search {
+            width: 32px;
+            height: 32px;
+            margin-left: 10px;
+            margin-right: 15px;
+        }
+
+        div {
+            display: flex;
+            margin-right: 20px;
+        }
+
+        .giohang {
+            margin-top: 3px;
+            margin-left: -25px;
+            position: relative;
+
+
+            .hovergiohang {
+
+                width: 380px;
+                display: block;
+                height: 380px;
+                background-color: white;
+                position: absolute;
+                top: 80px;
+                right: 0px;
+                visibility: hidden;
+                opacity: 1;
+                transition: top 0.3s, opacity 0.3s, visibility 0.3s;
+                box-shadow: 0px 12px 20px -10px #19314D;
+
+                .xemgiohang {
+                    height: 50px;
+                    width: 100%;
+                    margin: 7px 15px;
+
+                    h4 {
+                        background-color: #19314D;
+                        width: 90%;
+                        text-align: center;
+                        margin-top: 10px;
+
+                        a {
+                            color: white;
+
+                        }
+
+                    }
+                }
+
+                .khanhdat {
+                    overflow-x: hidden;
+                    /* Hide horizontal scrollbar */
+                    overflow-y: scroll;
+                    width: 380px;
+                    height: 300px;
+                    display: block;
+
+                    .item {
+                        margin: 7px 15px;
+                        color: black;
+
+                        img {
+
+                            max-width: 70px;
+                        }
+
+                        .content {
+                            width: 100%;
+                            display: block;
+                            margin-left: 20px;
+
+                            p {
+                                max-height: 8px;
+                            }
+
+                            h4 {
+                                float: right;
+                            }
+                        }
+                    }
+
+
+
+
+                }
+            }
+
+            span {
+                margin-left: 10px;
+            }
+        }
+
+        .giohang:hover .hovergiohang {
+            visibility: visible;
+            top: 45px;
+            opacity: 1;
+        }
+
+        .taikhoan {
+            border: 1px rgba(0, 0, 0, 0.4) solid;
+            border-top: none;
+            border-bottom: none;
+            height: 30px;
+            position: relative;
+
+
+            .hoverdangky {
+                width: 200px;
+                display: block;
+                height: 100px;
+                background-color: white;
+                position: absolute;
+                top: 80px;
+                visibility: hidden;
+                opacity: 0;
+                transition: top 0.3s, opacity 0.3s, visibility 0.3s;
+                box-shadow: 0px 12px 20px -10px #19314D;
+
+                a {
+                    opacity: 1;
+                }
+
+                .div {
+                    min-height: 40px;
+
+                    margin-top: 10px;
+                    margin-left: 14px;
+                    max-height: 50px;
+                }
+
+            }
+
+            .hoverdangky1 {
+                width: 150px;
+                display: block;
+                height: 50px;
+                background-color: white;
+                position: absolute;
+                top: 80px;
+                visibility: hidden;
+                opacity: 0;
+                transition: top 0.3s, opacity 0.3s, visibility 0.3s;
+                box-shadow: 0px 12px 20px -10px #19314D;
+
+                a {
+                    color: #19314D;
+                }
+
+                .div {
+                    min-height: 40px;
+                    text-align: center;
+                    margin-top: 10px;
+                    margin-left: 14px;
+                    max-height: 50px;
+                }
+
+            }
+
+            span {
+                margin-right: 10px;
+                margin-top: 5px;
+            }
+
+            img {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+
+
+        .abc:hover .hoverdangky {
+            visibility: visible;
+            top: 45px;
+            opacity: 1;
+        }
+
+        .abc:hover .hoverdangky1 {
+            visibility: visible;
+            top: 45px;
+            opacity: 1;
+        }
+
+        a {
+
+            color: var(--colors)
+        }
+
+        .img {
+            margin-right: 80px;
+            margin-left: 20px;
+        }
+    }
+
+
+}

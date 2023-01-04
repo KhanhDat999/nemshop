@@ -1,0 +1,26 @@
+::root{
+    --color : #070707;
+   
+}
+
+
+
+
+html{
+    --colors : rgba(7, 7, 7, 0.5);
+    background-color: #ffffff;
+    margin: 0px;
+    font-size: 14px;
+    font-family: gmv_din_pro;
+    color: var(--colors);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+}
+
+.children{
+   margin-top: 92px;
+}
+.body{
+    width: 100%;
+}

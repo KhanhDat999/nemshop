@@ -1,0 +1,32 @@
+.body{
+    margin: auto;
+    margin-top: 50px;
+    width: 1310px;
+
+}
+
+.chitiet{
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+}
+.order{
+    margin-top: 30px;
+    height: 260px;
+
+    .chitiet1{
+        height: 240px;
+
+        .img1{
+          width: 210px;
+          .img{
+            width: 160px;
+          }
+
+        }
+    }
+  .gia{
+    margin: auto;
+    cursor: pointer;
+  }
+}

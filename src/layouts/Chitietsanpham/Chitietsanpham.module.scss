@@ -1,0 +1,45 @@
+.body{
+    font-size: 14px;
+    width: 1300px;
+    height: 930px;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    .hinhnho{
+        width: 14vw;
+        height: 100%;
+        .chitiet{
+            margin-top: 10px;
+            width: 100%;
+            img{
+                width: 100%;
+            }
+        }
+    }
+    .hinhlon{
+        margin: 10px;
+        width: 43vw;
+        height: 100%;
+        img{
+            width: 100%;
+        }
+    }
+    .giohang{
+        margin-top: 10px;
+        width: 25vw;
+        height: 100%;
+       
+        margin-left: 8vw;
+        h2{
+            font-family: gmv_din_pro-bold !important;
+            font-weight: bold !important;
+        }
+        .Btn{
+            
+            width: 100%;
+            background-color: white;
+            border: 1px solid;
+            padding: 6px;
+        }
+    }
+}
