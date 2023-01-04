@@ -64,7 +64,7 @@ function Header() {
 
       <div className={cx('header')} >
         <div className={cx('bodyheader')}>
-          <Link to='/' > <img className={cx('img')} alt='img' src='https://theme.hstatic.net/200000182297/1000887316/14/logo.png?v=283' data-aos="fade-up" data-aos-easing="ease-in-out"
+          <Link to='/nemshop' > <img className={cx('img')} alt='img' src='https://theme.hstatic.net/200000182297/1000887316/14/logo.png?v=283' data-aos="fade-up" data-aos-easing="ease-in-out"
             data-aos-duration="1200" /></Link>
           <div className={cx('responsive')}>
             <Link to='/tatcasanpham' data-aos="fade-right"
@@ -128,7 +128,7 @@ function Header() {
               }
                {
                 singin &&   <div className={cx('hoverdangky1')}>
-                <a href='/' >  <div onClick={() => localStorage.removeItem("singup")} className={cx('div')}>Đăng xuất</div> </a>
+                <a href='/nemshop' >  <div onClick={() => localStorage.removeItem("singup")} className={cx('div')}>Đăng xuất</div> </a>
               
               </div>
               }

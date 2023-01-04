@@ -21,7 +21,7 @@ function Dangnhap() {
             return res.Email == data.Email && res.Email == data.Email
         })
          localStorage.setItem("singup", JSON.stringify(abc))
-         navigate('/')
+         navigate('/nemshop')
          window.location.reload();
     }
     const uiConfig = {
