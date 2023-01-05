@@ -8,7 +8,7 @@ const cx = classNames.bind(styles)
 
 function Menu({ setMenu }) {
 
-    // const [body, setBody] = useState(false)
+
    
     return (
         <div className={cx('body')} >

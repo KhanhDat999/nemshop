@@ -31,7 +31,7 @@ function Defautlayout({ children }) {
 
 }, [])
 
-console.log(aolen)
+
 
 const value ={
     list,
