@@ -48,7 +48,7 @@ function Items({ currentItems }) {
 
 
 
-function Sanpham() {
+function Sanpham({img , title}) {
     const Item = useContext(Global)
     const [item, setItem] = useState([])
 
@@ -95,10 +95,10 @@ function Sanpham() {
         <div>
             <hr></hr>
             <div>
-                <h5>TRANG CHỦ / TẤT CẢ SẢN PHẨM</h5>
+                <h5>TRANG CHỦ / {title}</h5>
             </div>
             <Row>
-                <Col > <img style={{ width: '100%' }} alt='sd' src='https://file.hstatic.net/200000182297/file/z3824988104332_e30b6f149c965440666761b25c489464__1__dbc437c43a9b4e3892dfc3cfe78edd72.jpg' /></Col>
+                <Col > <img style={{ width: '100%' }} alt='sd' src={img} /></Col>
             </Row>
             <div className={cx('body')}>
                 <div className={cx('panel')}>
@@ -143,7 +143,7 @@ function Sanpham() {
                 <div className={cx('bodyright')}>
                     <div className={cx('content')}>
                         <div>
-                            <h1>TẤT CẢ SẢN PHẨM</h1>
+                            <h1>{title}</h1>
                         </div>
                         <div className={cx('colecsionsibar')}>
 

@@ -73,28 +73,24 @@ function Header() {
           </div>
           <div className={cx('responsive')}>
 
-            <Link to='/tatcasanpham' data-aos="fade-right"
+            <Link to='/sanphammoi' data-aos="fade-right"
               data-aos-easing="ease-in-out"
               data-aos-duration="1200" > SẢN PHẨM MỚI </Link>
           </div >
           <div className={cx('responsive')}>
-            <Link to='/tatcasanpham' data-aos="fade-right"
+            <Link to='/bosuutap' data-aos="fade-right"
               data-aos-easing="ease-in-out"
               data-aos-duration="1400" > BỘ SƯU TẬP </Link>
           </div>
           <div className={cx('responsive')}>
-            <Link to='/tatcasanpham' data-aos="fade-right"
+            <Link to='/nemonline' data-aos="fade-right"
               data-aos-easing="ease-in-out"
               data-aos-duration="1600" > NEM ONLINE </Link>
           </div>
-          <div className={cx('responsive')}>
-            <Link to='/tatcasanpham' data-aos="fade-right"
-              data-aos-easing="ease-in-out"
-              data-aos-duration="1800" > SALE </Link>
-          </div >
+       
           <div className={cx('responsive')}>
 
-            <Link to='/tatcasanpham' data-aos="fade-right"
+            <Link to='/sanphamnhapkhau' data-aos="fade-right"
               data-aos-easing="ease-in-out"
               data-aos-duration="2000" > SẢN PHẨM NHẬP KHẨU NHẬT BẢN </Link>
           </div>
