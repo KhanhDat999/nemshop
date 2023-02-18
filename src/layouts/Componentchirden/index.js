@@ -179,7 +179,7 @@ function Children({img , title}) {
                                 <span >Giá</span> <AiOutlineDown />
                                 <div className={cx('hovergia')}>
                                     <div>
-                                        <input name="fav_language" onClick={() => Item.setAolen(Item.tatca)} type='radio' />
+                                        <input name="fav_language" onClick={() => setItem(item)} type='radio' />
                                         <span>Tất cả</span>
                                     </div>
                                     <div>
