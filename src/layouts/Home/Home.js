@@ -2,10 +2,13 @@ import styles from './Home.module.scss';
 import classNames from 'classnames/bind';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useContext, useEffect, useState } from 'react';
-import { Global } from '../../components/defaulayout/defaulayout';
+import { useEffect, useState } from 'react';
 import { GrFormNext } from 'react-icons/gr'
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { increment } from '../redux';
+import ReactSlick from './ReactSlick';
+
 
 
 const cx = classNames.bind(styles)
@@ -16,43 +19,35 @@ function Home() {
     const [next1, setNext1] = useState(10)
     const [prew1, setPrew1] = useState(6)
 
+    const Item = useSelector(state => state.data.users)
 
-    const Item = useContext(Global)
-
+    const dispatch = useDispatch()
 
     const Prew = () => {
         if (prew === 0) {
-
-            setNext(Item.list.length)
-            setPrew(Item.list.length - 4)
+            setNext(Item.length)
+            setPrew(Item.length - 4)
             return
         }
-
-
         setNext(next - 1)
         setPrew(prew - 1)
 
     }
-
-
     const Next = () => {
-        if (window.innerWidth > 576 && next === Item.list.length) {
+        if (window.innerWidth > 576 && next === Item.length) {
             setNext(4)
             setPrew(0)
-          
             return
         }
-        if (window.innerWidth <= 576 && next === Item.list.length) {
+        if (window.innerWidth <= 576 && next === Item.length) {
             setNext(2)
             setPrew(0)
-        
             return
 
         }
         setNext(next + 1)
         setPrew(prew + 1)
     }
-
     const Prew1 = () => {
         if (prew1 === 6) {
             setNext1(11)
@@ -63,7 +58,6 @@ function Home() {
         setPrew1(prew1 - 1)
 
     }
-
     const Next1 = () => {
         if (prew1 === 7) {
             setNext1(10)
@@ -82,8 +76,6 @@ function Home() {
                 setNext1(8)
                 setPrew(0)
                 setPrew1(6)
-
-
                 return
             }
             if (window.innerWidth > 576) {
@@ -93,19 +85,16 @@ function Home() {
                 setPrew1(6)
             }
         }
-
-        const handleScroll = () => {
-
-        }
-
         window.addEventListener('resize', handleNext)
-        window.addEventListener('scroll', handleScroll)
         return () => {
             window.removeEventListener('resize', handleNext)
         }
     }, [])
+
+
     return (
         <div>
+
             <div className={cx('body')}>
                 <div className={cx('banner')} >
                     <Row>
@@ -153,20 +142,20 @@ function Home() {
                         SẢN PHẨM MỚI
                     </h2>
                 </div>
-                <div style={{ display: 'flex' }}>
+                {/* <div style={{ display: 'flex' }}>
                     <div className={cx('btnprew')}>
                         <button className={cx('nextimg')} onClick={Prew} >  <GrFormNext /> </button>
                     </div>
                     <Row className={cx('product')} sm={4} xs={2}>
 
-                        {Item.list && Item.list.slice(prew, next).map((res, index) => (
+                        {Item && Item.slice(prew, next).map((res, index) => (
                             <div key={index}>
                                 <Col>
                                     <div key={index} className={cx('container')}>
                                         <div className={cx('animation')}>
                                             <div className={cx('middle')}>
                                                 <div className={cx('middle1')}>
-                                                    <Link to='/chitietsanpham' className={cx('text')} onClick={() => Item.setItem(res)} > CHI TIẾT    </Link>
+                                                    <Link to='/chitietsanpham' className={cx('text')} onClick={() => dispatch(increment(res))} > CHI TIẾT    </Link>
                                                 </div>
                                             </div>
                                             <img className={cx('img')} alt='img' src={res.img} />
@@ -179,9 +168,12 @@ function Home() {
                         ))}
                     </Row>
                     <div className={cx('btnnext')}>
-                        <button className={cx('nextimg')}  onClick={Next}  >  <GrFormNext /> </button>
+                        <button className={cx('nextimg')} onClick={Next}  >  <GrFormNext /> </button>
                     </div>
 
+                </div> */}
+                <div>
+                    <ReactSlick />
                 </div>
                 <div >
                     <h2 className={cx('sanphammoi')} data-aos="fade-left"
@@ -196,14 +188,14 @@ function Home() {
                         <button className={cx('nextimg')} onClick={Prew1} >  <GrFormNext /> </button>
                     </div>
                     <Row className={cx('product')} sm={4} xs={2}>
-                        {Item.aolen && Item.list.slice(prew1, next1).map((res, index) => (
+                        {Item && Item.slice(prew1, next1).map((res, index) => (
                             <div key={index}>
                                 <Col>
                                     <div key={index} className={cx('container')}>
                                         <div className={cx('animation')}>
                                             <div className={cx('middle')}>
                                                 <div className={cx('middle1')}>
-                                                    <Link to='/chitietsanpham' className={cx('text')} onClick={() => Item.setItem(res)} > CHI TIẾT    </Link>
+                                                    <Link to='/chitietsanpham' className={cx('text')} onClick={() => dispatch(increment(res))} > CHI TIẾT    </Link>
                                                 </div>
                                             </div>
                                             <img className={cx('img')} alt='img' src={res.img} />

@@ -1,10 +1,12 @@
-
+import { fectData } from '../../Redux/Reduce';
 import Row from 'react-bootstrap/Row';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 // const cx = classNames.bind(styles)
 
@@ -13,16 +15,16 @@ function Dangnhap() {
     const navigate = useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
-        
+
         const login = JSON.parse(localStorage.getItem("login"))
-      
-          const abc = login.find((res ) =>{
+
+        const abc = login.find((res) => {
 
             return res.Email == data.Email && res.Email == data.Email
         })
-         localStorage.setItem("singup", JSON.stringify(abc))
-         navigate('/nemshop')
-         window.location.reload();
+        localStorage.setItem("singup", JSON.stringify(abc))
+        navigate('/nemshop')
+        window.location.reload();
     }
     const uiConfig = {
         // Popup signin flow rather than redirect flow.
@@ -31,16 +33,19 @@ function Dangnhap() {
         signInSuccessUrl: '/nemshop',
         // We will display Google and Facebook as auth providers.
         signInOptions: [
-          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        //   firebase.auth.FacebookAuthProvider.PROVIDER_ID
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            //   firebase.auth.FacebookAuthProvider.PROVIDER_ID
         ],
-       
-      };
-    
+
+    };
+    const count = useSelector(state => console.log(state));
+   
+    console.log(count)
+
     return (
         <>
             <h2>ĐĂNG NHẬP</h2>
-            <form onSubmit={handleSubmit(onSubmit)}> 
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     Nếu bạn đã có tài khoản, hãy đăng nhập để tích lũy điểm thành viên và nhận được những ưu đãi tốt hơn!
                 </div>
@@ -49,12 +54,12 @@ function Dangnhap() {
                 </Row>
                 <Row>
                     <input {...register("Email", {
-                                required: true, pattern: {
-                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                    message: "Email không hợp lệ"
-                                }
-                            })} placeholder='Email' />
-                   <p style={{ color: 'red', maxHeight: '0px' }}> {errors.Email?.message}</p>
+                        required: true, pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                            message: "Email không hợp lệ"
+                        }
+                    })} placeholder='Email' />
+                    <p style={{ color: 'red', maxHeight: '0px' }}> {errors.Email?.message}</p>
                 </Row>
                 <Row>
                     <label>Mật khẩu</label>
@@ -67,7 +72,7 @@ function Dangnhap() {
                     <Row><button type='submit'  > Đăng nhập  </button>  </Row>
                 </div>
             </form>
-               <h3 style={{textAlign : 'center' , marginTop : '20px' , marginBottom : '-20px'}}>Hoặc</h3>
+            <h3 style={{ textAlign: 'center', marginTop: '20px', marginBottom: '-20px' }}>Hoặc</h3>
             <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
         </>
 

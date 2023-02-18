@@ -1,14 +1,4 @@
-@media screen and (max-width : 36em) {
-    .product {
-        div:nth-child(3) {
-            display: none;
-        }
 
-        div:nth-child(4) {
-            display: none;
-        }
-    }
-}
 
 .img {
     width: 50vw;
@@ -112,14 +102,9 @@
 
 .body {
     width: 100vw;
-
-
-
     .product {
-
         margin: auto;
-
-        // width: 1300px;
+      
         width: 1300px;
         margin-bottom: 50px;
 

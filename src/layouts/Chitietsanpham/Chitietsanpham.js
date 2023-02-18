@@ -1,27 +1,25 @@
 import styles from './Chitietsanpham.module.scss';
 import classNames from 'classnames/bind';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Global } from '../../components/defaulayout/defaulayout';
 import toast, { Toaster } from 'react-hot-toast';
-
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles)
 
 function GiohangChitiet() {
+    const Item = useSelector(state => state.props)
 
     const [img, setImg] = useState()
     const [soluong, setSoluong] = useState(1)
-    const Item = useContext(Global)
 
-    const { item } = Item
-    useEffect(() =>{
+    useEffect(() => {
         document.documentElement.scrollTop = 0;
-    },[])
+    }, [])
 
     const Prew = () => {
-        if (soluong == 1) return;
+        if (soluong === 1) return;
         setSoluong(soluong - 1)
     }
 
@@ -30,31 +28,33 @@ function GiohangChitiet() {
         const cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : []
 
         const abc = cart.some((res) => {
-            return res.id == item.id
+            return res.id === Item.id
         })
 
-        if (abc == true) toast.error("Sản phẩm đã được thêm vào giỏ hàng")
+        if (abc === true) toast.error("Sản phẩm đã được thêm vào giỏ hàng")
         else {
 
             cart.push({
-                id: item.id,
-                img: item.img,
-                img1: item.img1,
-                img2: item.img2,
-                kieudang: item.kieudang,
-                masp: item.masp,
-                phuhop: item.phuhop,
-                chatlieu: item.chatlieu,
-                name: item.name,
-                gia: item.gia,
-                mausac: item.mausac,
-                price : item.price,
-                soluong : soluong
+                id: Item.id,
+                img: Item.img,
+                img1: Item.img1,
+                img2: Item.img2,
+                kieudang: Item.kieudang,
+                masp: Item.masp,
+                phuhop: Item.phuhop,
+                chatlieu: Item.chatlieu,
+                name: Item.name,
+                gia: Item.gia,
+                mausac: Item.mausac,
+                price: Item.price,
+                soluong: soluong
             })
             localStorage.setItem("cart", JSON.stringify(cart))
             toast.success('Đã thêm sản phẩm vào giỏ hàng')
         }
     }
+
+
     return (
 
         <div>
@@ -71,36 +71,36 @@ function GiohangChitiet() {
                 <div className={cx('hinhnho')}>
 
                     <div className={cx('chitiet')}>
-                        <img onClick={() => setImg(item.img)} src={item.img} alt='img' />
+                        <img onClick={() => setImg(Item.img)} src={Item.img} alt='img' />
                     </div>
                     <div className={cx('chitiet')}>
-                        <img onClick={() => setImg(item.img1)} src={item.img1} alt='img' />
+                        <img onClick={() => setImg(Item.img1)} src={Item.img1} alt='img' />
                     </div>
                     <div className={cx('chitiet')}>
-                        <img onClick={() => setImg(item.img2)} src={item.img2} alt='img' />
+                        <img onClick={() => setImg(Item.img2)} src={Item.img2} alt='img' />
                     </div>
                 </div>
                 <div className={cx('hinhlon')} >
-                    <img src={img || item.img} alt='img' />
+                    <img src={img || Item.img} alt='img' />
                 </div>
                 <div className={cx('giohang')}>
                     <div>
-                        <h5>{item.name}</h5>
+                        <h5>{Item.name}</h5>
                     </div>
                     <p>Thương hiệu : Nem</p>
-                    <p>Mã SP: {item.masp}</p>
-                    <h2>{item.gia}₫</h2>
-                    <h4> Màu sắc : {item.mausac}</h4>
-                    <div style={{ marginTop : '20px' , marginBottom : '30px'}} >
+                    <p>Mã SP: {Item.masp}</p>
+                    <h2>{Item.gia}₫</h2>
+                    <h4> Màu sắc : {Item.mausac}</h4>
+                    <div style={{ marginTop: '20px', marginBottom: '30px' }} >
                         <Row >
                             <Col>
                                 <button onClick={Cart} className={cx('Btn')}> Thêm vào giỏ </button>
                             </Col>
                         </Row>
                     </div>
-                    <p>Chất liệu: {item.chatlieu}</p>
-                    <p>Kiểu dáng: {item.kieudang}</p>
-                    <p>Phù hợp: {item.phuhop}</p>
+                    <p>Chất liệu: {Item.chatlieu}</p>
+                    <p>Kiểu dáng: {Item.kieudang}</p>
+                    <p>Phù hợp: {Item.phuhop}</p>
                     <p>Sản phẩm thuộc dòng sản phẩm:  NEM NEW</p>
                     <p>Thông tin người mẫu: mặc sản phẩm size 2</p>
                 </div>

@@ -3,16 +3,17 @@ import Col from 'react-bootstrap/Col'
 import styles from './Sanpham.module.scss'
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom'
-import React, { useContext, useState } from 'react';
+import React, {  useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import { Global } from '../../components/defaulayout/defaulayout'
 import { AiOutlineDown } from 'react-icons/ai'
+import { useSelector, useDispatch } from 'react-redux';
+import { increment } from '../redux';
 
 const cx = classNames.bind(styles)
 
 function Items({ currentItems }) {
-
-    const Item = useContext(Global)
+   
+    const ditpath = useDispatch()
 
     return (
         <>
@@ -25,7 +26,7 @@ function Items({ currentItems }) {
                                 <div className={cx('animation')}>
                                     <div className={cx('middle')}>
                                         <div className={cx('middle1')}>
-                                            <Link to='/chitietsanpham' className={cx('text')} onClick={() => Item.setItem(res)} > CHI TIẾT    </Link>
+                                            <Link to='/chitietsanpham' className={cx('text')} onClick={() => ditpath(increment(res))} > CHI TIẾT    </Link>
                                         </div>
                                     </div>
                                     <img className={cx('img')}  alt='img' src={res.img} />
@@ -35,8 +36,6 @@ function Items({ currentItems }) {
                                     <span>{res.gia}₫</span>
                                 </div>
                             </Col>
-
-
                         </div>
                     ))}
                 </Row>
@@ -48,48 +47,47 @@ function Items({ currentItems }) {
 
 
 
-function Sanpham({img , title}) {
-    const Item = useContext(Global)
-    const [item, setItem] = useState([])
+function Children({img , title}) {
+
+    const item = useSelector(state => state.data.posts)
+    const [Item , setItem] = useState(useSelector(state => state.data.posts))
 
     const [itemOffset, setItemOffset] = useState(0);
 
     const endOffset = itemOffset + 9;
-    const currentItems = Item.aolen.slice(itemOffset, endOffset)
-    const pageCount = Math.ceil(Item.aolen.length / 9)
+    const currentItems = Item.slice(itemOffset, endOffset)
+    const pageCount = Math.ceil(Item.length / 9)
 
     const handlePageClick = (event) => {
-        const newOffset = (event.selected * 9) % Item.aolen.length;
+        const newOffset = (event.selected * 9) % Item.length;
         setItemOffset(newOffset);
     };
 
     const Gia = (price, price1) => {
-        const abc = Item.tatca.filter((res, index) => {
+        const abc = item.filter((res, index) => {
 
             return res.price > price && res.price < price1
         })
         setItemOffset(0)
-        Item.setAolen(abc)
+        setItem(abc)
     }
     const Gia500 = (price) => {
         if (typeof price == 'number') {
-            const abc = Item.tatca.filter((res) => {
+            const abc = item.filter((res) => {
                 return res.price < price
             })
             setItemOffset(0)
-            Item.setAolen(abc)
+            setItem(abc)
         }
         else {
-            const abc = Item.tatca.filter((res) => {
+            const abc = item.filter((res) => {
                 return res.mausac == price
             })
 
-            Item.setAolen(abc)
+            setItem(abc)
             setItemOffset(0)
-
         }
     }
-
 
     return (
         <div>
@@ -154,7 +152,7 @@ function Sanpham({img , title}) {
 
 
                                         <div>
-                                            <input onClick={() => Item.setAolen(Item.tatca)} name="fav_language" type='radio' />
+                                            <input onClick={() => setItem(item)} name="fav_language" type='radio' />
                                             <label>Tất cả</label>
                                         </div>
                                         <div>
@@ -210,10 +208,8 @@ function Sanpham({img , title}) {
                     </div>
                     <div className={cx('product')}>
                         <Items currentItems={currentItems} />
-                        {item &&
-
+                        {Item &&
                             <div className={cx('pagination')}>
-
                                 <ReactPaginate
                                     previousLabel={"Prew"}
                                     nextLabel={"Next"}
@@ -234,4 +230,4 @@ function Sanpham({img , title}) {
     );
 }
 
-export default Sanpham;
+export default Children;

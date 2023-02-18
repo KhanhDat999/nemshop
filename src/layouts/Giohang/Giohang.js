@@ -2,16 +2,17 @@ import styles from './Giohang.module.scss';
 import classNames from 'classnames/bind';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Global } from '../../components/defaulayout/defaulayout';
 import toast, { Toaster } from 'react-hot-toast';
+import {  useDispatch } from 'react-redux';
+import { increment } from '../redux';
 
 const cx = classNames.bind(styles)
 
 function Giohang() {
-
-    const Item = useContext(Global)
+    
+    const ditpath = useDispatch()
     const [item, setItem] = useState()
     const [total, setTotal] = useState(0)
 
@@ -27,10 +28,7 @@ function Giohang() {
     const Getdata = () => {
         const cart = JSON.parse(localStorage.getItem("cart"))
         setItem(cart)
-
-  
         const abc = cart.reduce((total, item) => {
-         
             return total + item.price
 
         }, 0)
@@ -80,7 +78,7 @@ function Giohang() {
                         
                         <Col lg={2}>
                             <div>
-                                Tổng tiền
+                                Xoá
                             </div>
                         </Col>
                     </div>
@@ -95,7 +93,7 @@ function Giohang() {
                             <div >
                                 <Row className={cx('chitiet1')}>
                                     <Col className={cx('img1')} lg={2}>
-                                        <Link to='/chi-tiet-san-pham'>  <img onClick={() => Item.setItem(res)} className={cx('img')} src={res.img} />  </Link>
+                                        <Link to='/chitietsanpham'>  <img onClick={() => ditpath(increment(res))} className={cx('img')} src={res.img} alt='img' />  </Link>
 
                                     </Col>
                                     <Col className={cx('gia')} lg={4}>
@@ -112,11 +110,7 @@ function Giohang() {
                         </div>
                         <hr style={{ opacity: '0.1' }}></hr>
                     </div>
-
                 ))}
-
-
-                {/* <div style={{ float: 'right' }}> <h4>Tổng tiền {total}.000₫ </h4></div> */}
             </div>
         </div >
     );

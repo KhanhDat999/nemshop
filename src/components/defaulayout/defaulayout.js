@@ -1,65 +1,34 @@
 import Header from "../header/Header";
 import Footer from "../footer/footer";
 import './global.scss';
-import { createContext, useState, useEffect } from 'react'
-import { instance } from "../../Uttils/requid";
+import { useEffect } from 'react'
+import { fectData, fectData1 } from "../../Redux/Reduce";
+import { useDispatch } from 'react-redux';
 
-
-
-
-export const Global = createContext()
 
 function Defautlayout({ children }) {
-    const [item, setItem] = useState()
-    const [list, setList] = useState([])
-    const [aolen, setAolen] = useState([])
-    const [tatca, setTatca] = useState([])
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        instance.get(`sanphammois`)
-            .then(res => setList(res.data))
-
+        dispatch(fectData())
+        dispatch(fectData1())
     }, [])
-    useEffect(() => {
-
-        instance.get('tatcarsanpham')
-            .then(res => {
-                setAolen(res.data)
-                setTatca(res.data)
-            }
-            )
-
-    }, [])
-
-
-
-    const value = {
-        list,
-        item,
-        setItem,
-        aolen,
-        setAolen,
-        setTatca,
-        tatca
-    }
-
 
 
     return (
-        <Global.Provider value={value}>
-            <div className="body">
-                <div >
-                    <Header />
-                </div>
-                <div className="children">
-                    {children}
-                </div>
-
-                <div>
-                    <Footer />
-                </div>
+        <div className="body">
+            <div >
+                <Header />
             </div>
-        </Global.Provider>
+            <div className="children">
+                {children}
+            </div>
+
+            <div>
+                <Footer />
+            </div>
+        </div>
     );
 }
 
