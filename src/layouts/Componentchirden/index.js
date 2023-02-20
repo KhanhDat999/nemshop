@@ -3,8 +3,8 @@ import Col from 'react-bootstrap/Col'
 import styles from './Sanpham.module.scss'
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom'
-import React, {  useState } from 'react';
-import ReactPaginate from 'react-paginate';
+import React, { useState } from 'react';
+// import ReactPaginate from 'react-paginate';
 import { AiOutlineDown } from 'react-icons/ai'
 import { useSelector, useDispatch } from 'react-redux';
 import { increment } from '../redux';
@@ -12,7 +12,7 @@ import { increment } from '../redux';
 const cx = classNames.bind(styles)
 
 function Items({ currentItems }) {
-   
+
     const ditpath = useDispatch()
 
     return (
@@ -20,7 +20,7 @@ function Items({ currentItems }) {
             <div style={{ display: 'flex' }}>
                 <Row xs={3} md={3} lg={3}>
                     {currentItems && currentItems.map((res, index) => (
-                        <div style={{ marginTop: '14px' }}>
+                        <div key={index} style={{ marginTop: '14px' }}>
 
                             <Col>
                                 <div className={cx('animation')}>
@@ -29,7 +29,7 @@ function Items({ currentItems }) {
                                             <Link to='/chitietsanpham' className={cx('text')} onClick={() => ditpath(increment(res))} > CHI TIẾT    </Link>
                                         </div>
                                     </div>
-                                    <img className={cx('img')}  alt='img' src={res.img} />
+                                    <img className={cx('img')} alt='img' src={res.img} />
                                 </div>
                                 <div className={cx('chitiet')}>
                                     <p><Link>{res.name}</Link></p>
@@ -47,47 +47,56 @@ function Items({ currentItems }) {
 
 
 
-function Children({img , title}) {
+function Children({ img, title }) {
 
     const item = useSelector(state => state.data.posts)
-    const [Item , setItem] = useState(useSelector(state => state.data.posts))
+    const [Item, setItem] = useState(useSelector(state => state.data.posts))
 
     const [itemOffset, setItemOffset] = useState(0);
+    const [background, setBackground] = useState(0)
 
     const endOffset = itemOffset + 9;
     const currentItems = Item.slice(itemOffset, endOffset)
     const pageCount = Math.ceil(Item.length / 9)
 
     const handlePageClick = (event) => {
-        const newOffset = (event.selected * 9) % Item.length;
+        const newOffset = (event * 9) % Item.length;
         setItemOffset(newOffset);
+
     };
 
     const Gia = (price, price1) => {
-        const abc = item.filter((res, index) => {
 
-            return res.price > price && res.price < price1
-        })
         setItemOffset(0)
-        setItem(abc)
+        setItem(item.filter(res => res.price > price && res.price < price1))
+        setBackground(0)
     }
     const Gia500 = (price) => {
-        if (typeof price == 'number') {
-            const abc = item.filter((res) => {
-                return res.price < price
-            })
-            setItemOffset(0)
-            setItem(abc)
-        }
-        else {
-            const abc = item.filter((res) => {
-                return res.mausac == price
-            })
+        const result = typeof price == 'number'
+            ? item.filter((res) => res.price < price)
+            : item.filter((res) => res.mausac === price);
+        setItem(result)
+        setItemOffset(0)
+        setBackground(0)
 
-            setItem(abc)
-            setItemOffset(0)
-        }
     }
+
+    function Prew() {
+        if (background === 0) return
+        setBackground(background - 1)
+        handlePageClick(background - 1)
+
+    }
+
+   
+    function Next() {
+        if (background === pageCount - 1) return
+        setBackground(background + 1)
+        handlePageClick(background + 1)
+        
+    }
+
+
 
     return (
         <div>
@@ -208,7 +217,27 @@ function Children({img , title}) {
                     </div>
                     <div className={cx('product')}>
                         <Items currentItems={currentItems} />
-                        {Item &&
+                        <div className={cx('pagination')}>
+                            <div className={cx('pagination1')} >
+
+                                <div className={styles.PrewNext} onClick={Prew}> Prew</div>
+                                <div className={styles.li}>
+                                    {
+                                        Array(pageCount).fill().map((res, index) => (
+                                            <div className={styles.khanhdat} key={index} onClick={() => {
+                                                setBackground(index)
+                                                handlePageClick(index)
+                                            }} style={{ backgroundColor: background === index ? '#070707' : '', color: background === index ? 'white' : '' }} >{index + 1}</div>
+                                        ))
+                                    }
+                                </div>
+                                <div className={styles.PrewNext} onClick={Next}>Next</div>
+
+                            </div>
+                        </div>
+                        {/* {Item &&
+
+
                             <div className={cx('pagination')}>
                                 <ReactPaginate
                                     previousLabel={"Prew"}
@@ -221,7 +250,7 @@ function Children({img , title}) {
                                     activeClassName={"khanhdat"}
                                 />
                             </div>
-                        }
+                        } */}
                     </div>
                 </div>
 

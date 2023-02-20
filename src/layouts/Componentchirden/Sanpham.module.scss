@@ -36,67 +36,45 @@
     .pagination {
         display: flex;
         margin-top: 70px;
+
         color: #19314D;
         justify-content: center;
 
-
-        ul {
+        .pagination1 {
             display: flex;
-            height: 40px;
+            justify-content: space-around;
+            width: 33%;
 
-
-            li {
-                margin-left: 10px;
+            .PrewNext {
+                padding: 10px;
+                 cursor: pointer;
                 border: 0px black solid;
                 background-color: #EFEFF4;
                 border-radius: 2px;
+            }
 
+            .li {
+                display: flex;
+                width: 100%;
+                justify-content: space-evenly;
 
-                list-style: none;
-
-
-
-                &:focus-within {
-                    color: white;
-                    background-color: #070707;
-
-                    a {
-                        color: white;
-                    }
-
-                    ::nth-child(2) {
-                        background-color: red;
-                    }
-                }
-
-
-                a {
-                    color: #070707;
+                div {
                     padding: 10px;
-                    margin: auto;
-                    font-size: 15px;
+
+                    border: 0px black solid;
+                    background-color: #EFEFF4;
+                    border-radius: 2px;
+                    list-style: none;
                 }
-            }
 
-            li:hover {
-                background-color: #070707;
-                color: white;
-
-                a:hover {
+                div:hover {
                     background-color: #070707;
                     color: white;
+                    cursor: pointer;
                 }
             }
-
 
         }
-
-
-
-    }
-
-    .pagination:focus li {
-        background-color: red;
     }
 }
 
@@ -157,7 +135,7 @@
 
                 div {
                     margin: 10px;
-                    
+
 
                     label {
                         margin-left: 10px;
@@ -167,7 +145,7 @@
 
 
             }
-           
+
         }
 
         .gia:hover .hovergia {
@@ -207,8 +185,6 @@
         height: 38px;
         font-weight: bold;
     }
-
-
 }
 
 .animation {
@@ -244,7 +220,6 @@
             transition: opacity 0.3s, left 0.3s;
 
             .text {
-
                 border: 1.1px solid;
                 width: 100%;
                 color: white;

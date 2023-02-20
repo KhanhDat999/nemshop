@@ -54,9 +54,7 @@ function GiohangChitiet() {
         }
     }
 
-
     return (
-
         <div>
             <Toaster
                 position="top-center"
