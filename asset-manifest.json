@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/nemshop/static/css/main.9733aa80.css",
-    "main.js": "/nemshop/static/js/main.9fd79b1f.js",
+    "main.js": "/nemshop/static/js/main.015c455e.js",
     "index.html": "/nemshop/index.html",
     "static/media/slick.svg": "/nemshop/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/nemshop/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/nemshop/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/nemshop/static/media/slick.295183786cd8a1389865.woff",
     "main.9733aa80.css.map": "/nemshop/static/css/main.9733aa80.css.map",
-    "main.9fd79b1f.js.map": "/nemshop/static/js/main.9fd79b1f.js.map"
+    "main.015c455e.js.map": "/nemshop/static/js/main.015c455e.js.map"
   },
   "entrypoints": [
     "static/css/main.9733aa80.css",
-    "static/js/main.9fd79b1f.js"
+    "static/js/main.015c455e.js"
   ]
 }
